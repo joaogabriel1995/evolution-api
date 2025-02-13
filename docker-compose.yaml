@@ -1,0 +1,21 @@
+services:
+  evolution-api:
+    container_name: evolution_api
+    image: atendai/evolution-api:v2.1.1
+    restart: always
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - ./evolution_instances:/evolution/instances
+    networks:
+      - intnet
+volumes:
+  evolution_instances:
+
+
+networks:
+  intnet:
+    name: n8n-flow_intnet
+    external: true
